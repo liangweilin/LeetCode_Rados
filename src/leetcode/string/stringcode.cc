@@ -1,6 +1,6 @@
 #include "stringcode.hpp"
 #include <cstring>
-
+#include <list>
 
 void StringCode::exec(){
 	int sub_cmd = argument->get_sub_cmd();
@@ -13,6 +13,57 @@ void StringCode::exec(){
 			do_012_decodeways();
 			break;
 		}
+		case SUB_CMD_STR_GENPARENTHESES:{
+			do_022_generateparentheses();
+			break;
+		}
+		case SUB_CMD_STR_IMPLEMENTSTR:{
+			do_28_implementstrstr();			
+			break;
+		}
+		case SUB_CMD_STR_LOFLASTWORD:{
+			do_58_lengthoflastword();
+			break;
+		}
+		case SUB_CMD_STR_COMBIOFPHNUMBER:{
+			do_017_combinationofphonenumber();
+			break;
+		}
+		case SUB_CMD_STR_LONGESTCOMMONPREFIX:{
+        		do_014_longestcommonprefix();
+			break;
+		}
+		case SUB_CMD_STR_LONGESTPALINDROMICSUBSTRING:{
+        		do_005_longestpalindromicsubstring();
+			break;
+		}
+		case SUB_CMD_STR_LONGESTSUBSTRINGWIHTOUTREPEATCHAR:{
+	   		do_395_longestsubstringwithoutrepeatchar();
+			break;
+		}
+		case SUB_CMD_STR_RESTOREIPADDRESS:{
+        		do_093_restoreipaddress();
+			break;
+		}
+		case SUB_CMD_STR_REVERSEWORDINSTRING:{
+        		do_151_reversewordsinstring();
+			break;
+		}
+		case SUB_CMD_STR_SIMPLIFYPATH:{
+		        do_071_simplifypath();
+			break;
+		}
+		case SUB_CMD_STR_VALIDPALINDROME:{
+        		do_125_validpalindrome();
+			break;
+		}
+		case SUB_CMD_STR_VALIDPARENTHESES:{
+        		do_020_validparentheses();
+			break;
+		}
+
+
+
 	}
 
 }
@@ -22,7 +73,19 @@ void StringCode::help(){
 	cout << "Support Commands:" << endl;
 	cout << "stringcode countandsay" << endl;
 	cout << "stringcode decodeways" << endl;
-
+	cout << "stringcode generateparentheses" << endl;
+	cout << "stringcode implementstrstr" << endl;
+	cout << "stringcode lenoflastword" << endl;
+	cout << "stringcode combineofphonenum" << endl;
+	cout << "stringcode longestcommonprefix" << endl;
+	cout << "stringcode longestpalindromicsubstring" << endl;
+	cout << "stringcode longestsubstringwithoutrepeatchar" << endl;
+	cout << "stringcode restoreipaddress" << endl;
+	cout << "stringcode reversewordinstring" << endl;
+	cout << "stringcode simplifypath" << endl;
+	cout << "stringcode validpalindrome" << endl;
+	cout << "stringcode validparentheses" << endl;
+	cout << "stringcode " << endl;
 }
 
 
@@ -95,8 +158,99 @@ void StringCode::do_012_decodeways(){
 				}
 		}
 	}
-	
 	cout << count[len] << endl;
+}	
+
+
+void GenerateParentheses(string item,int open_free, int close_free, list<string> &result){
+	if ( open_free > close_free ) return;
+	if (open_free == 0 && close_free == 0){
+		result.push_back(item);
+	}
+	// if ( open < close ) return;
+	//
+	if(open_free > 0){GenerateParentheses(item+'(', open_free-1, close_free,  result);}
+	if(close_free > 0){GenerateParentheses(item+')', open_free, close_free - 1,  result);}
 }
+
+void StringCode::do_022_generateparentheses(){
+	// input param
+	int n = 3;
+	cout << "input: " << endl;
+	cout << n << endl;
+	cout << "result: " << endl;
+	list<string> result;
+	GenerateParentheses("",n,n,result);
+	list<string>::iterator iter = result.begin();
+        for (;iter!=result.end();iter++){
+                cout << *iter << endl;
+        }	
+}
+
+void StringCode::do_28_implementstrstr(){
+	// input param 
+	cout << "input: " << endl;
+	string str = "  hellohello hello  ";
+	string substring = "el";
+	cout << "str: " << str << endl;
+	cout << "substring: " << substring << endl;
+	cout << "result: " << endl;
+	//deal 
+	for (int i = 0 ;i< str.length(); i++){
+		if (str.substr(i,substring.size()) == substring){
+			cout << "index is " << i << endl;
+		}
+	}
+}
+
+void StringCode::do_58_lengthoflastword(){
+	// input param
+	cout << "input: " << endl;
+	string str = "how do you do!  ";
+	string lastword = "";
+	cout << str << endl;
+	int count = 0;
+	int i = str.size();
+	while (str[i-1] == ' ' && i > 0){
+		i--;
+	}
+
+	while (str[i-1] != ' ' && i > 0){
+		lastword = str[i-1] + lastword;
+		count++ ;
+		i--;
+	}
+	cout << "last word is:" <<endl;
+	cout << lastword << endl;
+	cout << "len of last word is:" <<endl;
+	cout << count << endl;
+}
+
+void StringCode::do_017_combinationofphonenumber(){
+}
+
+
+void StringCode::do_014_longestcommonprefix(){
+}
+
+
+void StringCode::do_005_longestpalindromicsubstring(){
+}
+
+void StringCode::do_395_longestsubstringwithoutrepeatchar(){
+}
+
+void StringCode::do_093_restoreipaddress(){
+}
+
+void StringCode::do_151_reversewordsinstring(){
+}
+
+void StringCode::do_071_simplifypath(){
+}
+
+void StringCode::do_125_validpalindrome(){}
+
+void StringCode::do_020_validparentheses(){}
 
 

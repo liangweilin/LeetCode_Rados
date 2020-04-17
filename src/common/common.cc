@@ -105,7 +105,31 @@ int Argument::parse_sub_cmd(int argc, char *argv[])
 		sub_cmd = SUB_CMD_STR_COUNTANDSAY;
 	} else if (strcmp(sub_cmd_type.c_str(), "decodeways") == 0) {
 		sub_cmd = SUB_CMD_STR_DECODEWAYS;
-	}else {
+	} else if (strcmp(sub_cmd_type.c_str(), "generateparentheses") == 0) {
+		sub_cmd = SUB_CMD_STR_GENPARENTHESES;
+	} else if (strcmp(sub_cmd_type.c_str(), "implementstrstr") == 0) {
+		sub_cmd = SUB_CMD_STR_IMPLEMENTSTR;
+	} else if (strcmp(sub_cmd_type.c_str(), "lenoflastword") == 0) {
+		sub_cmd = SUB_CMD_STR_LOFLASTWORD;
+	} else if (strcmp(sub_cmd_type.c_str(), "combineofphonenum") == 0){
+		sub_cmd = SUB_CMD_STR_COMBIOFPHNUMBER;
+	} else if (strcmp(sub_cmd_type.c_str(), "longestcommonprefix") == 0){
+		sub_cmd = SUB_CMD_STR_LONGESTCOMMONPREFIX;
+	} else if (strcmp(sub_cmd_type.c_str(), "longestpalindromicsubstring") == 0){
+		sub_cmd = SUB_CMD_STR_LONGESTPALINDROMICSUBSTRING;
+	} else if (strcmp(sub_cmd_type.c_str(), "longestsubstringwithoutrepeatchar") == 0){
+		sub_cmd = SUB_CMD_STR_LONGESTSUBSTRINGWIHTOUTREPEATCHAR;
+	} else if (strcmp(sub_cmd_type.c_str(), "restoreipaddress") == 0){
+		sub_cmd = SUB_CMD_STR_RESTOREIPADDRESS;
+	} else if (strcmp(sub_cmd_type.c_str(), "reversewordinstring") == 0){
+		sub_cmd = SUB_CMD_STR_REVERSEWORDINSTRING;
+	} else if (strcmp(sub_cmd_type.c_str(), "simplifypath") == 0){
+		sub_cmd = SUB_CMD_STR_SIMPLIFYPATH;
+	} else if (strcmp(sub_cmd_type.c_str(), "validpalindrome") == 0){
+		sub_cmd = SUB_CMD_STR_VALIDPALINDROME;
+	} else if (strcmp(sub_cmd_type.c_str(), "validparentheses") == 0){
+		sub_cmd = SUB_CMD_STR_VALIDPARENTHESES;
+	} else {
 		cout << "Not supported Sub-Command:" << sub_cmd_type << endl;
 		return -EINVAL;
 	}
